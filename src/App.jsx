@@ -15,7 +15,6 @@ const Technology = lazy(() => import('./components/Technology'))
 const StateDiagram = lazy(() => import('./components/StateDiagram'))
 const Contact = lazy(() => import('./components/Contact'))
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'))
-const Compliance = lazy(() => import('./components/Compliance'))
 const PatentsPortfolio = lazy(() => import('./components/PatentsPortfolio'))
 const Research = lazy(() => import('./components/Research'))
 
@@ -267,7 +266,6 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/patents" element={<PatentsPortfolio />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
-              <Route path="/compliance" element={<Compliance />} />
             </Routes>
           </Suspense>
         </Layout>

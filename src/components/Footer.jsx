@@ -116,18 +116,11 @@ export default function Footer() {
             <p className="text-gray-600 text-xs font-mono">
               &copy; {currentYear} CIRWEL Systems. All rights reserved.
             </p>
-            <Link 
-              to="/privacy" 
+            <Link
+              to="/privacy"
               className="text-gray-500 hover:text-cyber-cyan text-xs font-mono transition-colors"
             >
               Privacy Policy
-            </Link>
-            <span className="text-gray-700">|</span>
-            <Link 
-              to="/compliance" 
-              className="text-gray-500 hover:text-cyber-cyan text-xs font-mono transition-colors"
-            >
-              Compliance
             </Link>
           </div>
           
