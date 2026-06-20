@@ -257,7 +257,6 @@ function ProductionAnimation() {
     uptime: 99.97,
     latency: 0.8,
     requests: 142847,
-    compliance: ['HIPAA', 'SOC2', 'GDPR'],
   })
   const [alerts, setAlerts] = useState([])
 
@@ -302,18 +301,6 @@ function ProductionAnimation() {
             <span className="text-[9px] font-mono text-gray-500">Requests</span>
             <span className="text-lg font-mono font-bold text-cyber-magenta">{(metrics.requests / 1000).toFixed(1)}k</span>
             <span className="text-[9px] font-mono text-gray-600">today</span>
-          </div>
-        </div>
-        
-        <div className="bg-dark-900 rounded-lg border border-dark-700 p-2">
-          <div className="text-[9px] font-mono text-gray-500 mb-2">Compliance Status</div>
-          <div className="flex gap-2">
-            {metrics.compliance.map(c => (
-              <div key={c} className="flex items-center gap-1 px-2 py-1 bg-cyber-green/10 rounded border border-cyber-green/30">
-                <div className="w-1.5 h-1.5 rounded-full bg-cyber-green" />
-                <span className="text-[9px] font-mono text-cyber-green">{c}</span>
-              </div>
-            ))}
           </div>
         </div>
         

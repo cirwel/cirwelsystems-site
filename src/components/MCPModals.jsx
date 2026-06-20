@@ -685,7 +685,7 @@ function LocalFirstAnimation() {
       </div>
       
       <p className="absolute bottom-2 text-xs text-gray-500 font-mono">
-        All data stays local, sub-millisecond response
+        All data stays local
       </p>
     </div>
   )
@@ -762,7 +762,7 @@ const animations = {
     icon: Cpu,
     color: 'green',
     Component: LocalFirstAnimation,
-    insight: 'All data stored locally with zero cloud dependencies. Sub-millisecond latency and complete privacy for sensitive AI operations.',
+    insight: 'All data stored locally with zero cloud dependencies and complete privacy for sensitive AI operations.',
   },
 }
 

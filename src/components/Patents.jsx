@@ -113,11 +113,10 @@ export default function Platform() {
     { icon: Eye, title: 'Anomaly Detection', desc: 'Detect behavioral drift, performance regressions, and unexpected state transitions in real time.', animationType: 'anomaly-detection' },
     { icon: Database, title: 'Knowledge Graph', desc: 'Captures discoveries and patterns across agents, enabling cross-agent learning and improvement', animationType: 'knowledge-graph' },
     { icon: Network, title: 'MCP Integration', desc: 'Standard Model Context Protocol for seamless integration with Cursor, Claude Desktop, VS Code', animationType: 'mcp-integration' },
-    { icon: Cpu, title: 'Local-First', desc: 'All data stored locally—no cloud dependencies, sub-millisecond latency, complete privacy', animationType: 'local-first' },
+    { icon: Cpu, title: 'Local-First', desc: 'All data stored locally—no cloud dependencies, complete privacy', animationType: 'local-first' },
   ]
 
   const stats = [
-    { value: '<1ms', label: 'Decision Latency' },
     { value: '2,500', label: 'Agents Tracked' },
     { value: '94K', label: 'Events Processed' },
     { value: '0', label: 'Cloud Dependencies' },
@@ -145,8 +144,8 @@ export default function Platform() {
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             State tracking, circuit breakers, audit trails, anomaly detection,
-            and multi-agent coordination — exposed as MCP tools. Sub-millisecond
-            latency, zero cloud dependencies, local-first by design.
+            and multi-agent coordination — exposed as MCP tools. Zero cloud
+            dependencies, local-first by design.
           </p>
         </motion.div>
 
