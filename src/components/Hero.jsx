@@ -251,7 +251,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4"
         >
           <motion.a
-            href="https://github.com/CIRWEL/unitares"
+            href="https://github.com/cirwel/unitares"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative w-full sm:w-auto px-8 py-4 rounded-lg font-semibold text-base sm:text-lg overflow-hidden shadow-lg shadow-cyber-cyan/20 text-center"

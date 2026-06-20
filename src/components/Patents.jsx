@@ -161,7 +161,7 @@ export default function Platform() {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {stats.map((stat, index) => (
             <StatCard key={stat.label} stat={stat} index={index} isInView={isInView} />
           ))}

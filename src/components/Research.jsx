@@ -18,8 +18,8 @@ const cards = [
     title: 'Reference implementation',
     description:
       'Source for the unitares runtime that runs in production. Inspect, audit, reproduce.',
-    href: 'https://github.com/CIRWEL/unitares',
-    linkText: 'github.com/CIRWEL/unitares',
+    href: 'https://github.com/cirwel/unitares',
+    linkText: 'github.com/cirwel/unitares',
     Icon: Github,
     color: 'magenta',
   },

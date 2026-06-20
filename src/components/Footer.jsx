@@ -100,8 +100,15 @@ export default function Footer() {
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-gray-500">Uptime</span>
-                <span className="text-cyber-cyan">99.9%</span>
+                <span className="text-gray-500">Source</span>
+                <a
+                  href="https://github.com/cirwel"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-cyber-cyan hover:text-cyber-magenta transition-colors"
+                >
+                  Open / GitHub
+                </a>
               </div>
             </div>
           </div>

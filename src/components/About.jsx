@@ -246,7 +246,7 @@ export default function About() {
                     Read the paper <ArrowRight className="w-3 h-3" />
                   </a>
                   <a
-                    href="https://github.com/CIRWEL/unitares"
+                    href="https://github.com/cirwel/unitares"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-cyber-cyan hover:text-white border-b border-cyber-cyan/30 hover:border-white transition-colors"
