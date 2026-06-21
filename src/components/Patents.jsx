@@ -4,6 +4,7 @@ import { Activity, ShieldCheck, Eye, Users, Gauge, RefreshCw, Database, Network,
 import AnimatedCounter from './AnimatedCounter'
 import MCPModal from './MCPModals'
 import useTilt from '../hooks/useTilt'
+import liveStats from '../data/live-stats.json'
 
 function CapabilityCard({ item, index, isInView, onClick }) {
   const { cardRef, handleMouseMove, handleMouseLeave, tiltStyle } = useTilt(5)
@@ -116,9 +117,11 @@ export default function Platform() {
     { icon: Cpu, title: 'Local-First', desc: 'All data stored locally—no cloud dependencies, complete privacy', animationType: 'local-first' },
   ]
 
+  // Auto-synced from local governance state by ~/scripts/refresh-cirwel-stats.sh
+  // (same source as cirwel.org). Honest single-operator self-traffic, not adoption.
   const stats = [
-    { value: '2,500', label: 'Agents Tracked' },
-    { value: '94K', label: 'Events Processed' },
+    { value: liveStats.events_total, label: 'Governance Events' },
+    { value: liveStats.active_agents_7d, label: 'Active Agents (7d)' },
     { value: '0', label: 'Cloud Dependencies' },
   ]
 
@@ -166,6 +169,9 @@ export default function Platform() {
             <StatCard key={stat.label} stat={stat} index={index} isInView={isInView} />
           ))}
         </div>
+        <p className="text-center text-gray-500 text-xs mt-6 max-w-2xl mx-auto">
+          Live from CIRWEL's own development fleet — self-traffic, not external adoption. Snapshot {liveStats.refreshed_at}.
+        </p>
       </div>
       
       <MCPModal 
