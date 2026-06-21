@@ -279,7 +279,7 @@ function ProductionAnimation() {
     <div className="relative w-full h-64 md:h-80 p-3">
       <div className="h-full flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <span className="text-[10px] font-mono text-gray-500">Production Environment</span>
+          <span className="text-[10px] font-mono text-gray-500">Production Environment · illustrative</span>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-cyber-green animate-pulse" />
             <span className="text-[10px] font-mono text-cyber-green">OPERATIONAL</span>
