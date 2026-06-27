@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState, useRef } from 'react'
-import { X, Activity, ShieldCheck, RefreshCw, Users, Gauge, Eye, Database, Network, Cpu } from 'lucide-react'
+import { X, Activity, ShieldCheck, RefreshCw, Users, Gauge, Eye, Database, Network, Cpu, Wrench, Layers } from 'lucide-react'
 
 function StateEvolutionAnimation() {
   const [points, setPoints] = useState([])
@@ -676,6 +676,172 @@ function LocalFirstAnimation() {
   )
 }
 
+function SelfHealingAnimation() {
+  const phases = [
+    { key: 'healthy', label: 'Healthy', color: '#00e077', detail: 'All processes nominal' },
+    { key: 'detected', label: 'Stale lock detected', color: '#ff6600', detail: 'Crashed process left a lock' },
+    { key: 'healing', label: 'Self-healing', color: '#ffaa00', detail: 'Clearing lock · breaking loop' },
+    { key: 'recovered', label: 'Recovered', color: '#00e077', detail: 'Resumed without an operator' },
+  ]
+  const [phase, setPhase] = useState(0)
+  const [cleared, setCleared] = useState(0)
+  const [loops, setLoops] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPhase(p => {
+        const next = (p + 1) % phases.length
+        if (next === 2) {
+          setCleared(c => c + 1)
+          setLoops(l => l + (Math.random() > 0.5 ? 1 : 0))
+        }
+        return next
+      })
+    }, 1400)
+    return () => clearInterval(interval)
+  }, [])
+
+  const cur = phases[phase]
+  const dots = Array.from({ length: 8 })
+
+  return (
+    <div className="relative w-full h-64 md:h-72 flex flex-col items-center justify-center">
+      <svg className="w-28 h-28" viewBox="0 0 100 100">
+        {dots.map((_, i) => {
+          const angle = (i / dots.length) * Math.PI * 2 - Math.PI / 2
+          const x = 50 + Math.cos(angle) * 36
+          const y = 50 + Math.sin(angle) * 36
+          const faulted = phase === 1 && i === 5
+          const color = faulted ? '#ff6600' : phase === 2 ? '#ffaa00' : cur.color
+          return (
+            <motion.circle
+              key={i}
+              cx={x}
+              cy={y}
+              r="4"
+              fill={color}
+              animate={{ opacity: phase === 2 ? [0.3, 1, 0.3] : faulted ? [1, 0.3, 1] : 0.8, scale: faulted ? 1.4 : 1 }}
+              transition={{ duration: 0.6, repeat: phase === 2 || faulted ? Infinity : 0, delay: phase === 2 ? i * 0.06 : 0 }}
+            />
+          )
+        })}
+        <circle cx="50" cy="50" r="15" fill="none" stroke={cur.color} strokeWidth="1" opacity="0.4" />
+        <motion.circle
+          cx="50" cy="50" r="15" fill="none" stroke={cur.color} strokeWidth="1.5"
+          strokeDasharray="6 4"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+          style={{ transformOrigin: '50px 50px' }}
+        />
+        <motion.circle
+          cx="50" cy="50" r="5" fill={cur.color}
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 1.4, repeat: Infinity }}
+        />
+      </svg>
+
+      <motion.div
+        key={cur.key}
+        className="mt-3 px-3 py-1 rounded border text-xs font-mono flex items-center gap-2"
+        style={{ borderColor: cur.color, color: cur.color }}
+        initial={{ opacity: 0, y: 4 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: cur.color }} />
+        {cur.label}
+      </motion.div>
+
+      <div className="mt-3 flex items-center gap-6">
+        <div className="text-center">
+          <div className="text-lg font-bold text-cyber-cyan">{cleared}</div>
+          <div className="text-[10px] text-gray-500 font-mono">Stale locks cleared</div>
+        </div>
+        <div className="w-px h-6 bg-gray-700" />
+        <div className="text-center">
+          <div className="text-lg font-bold text-cyber-green">{loops}</div>
+          <div className="text-[10px] text-gray-500 font-mono">Loops blocked</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function DualLogAnimation() {
+  const rows = [
+    { op: 'write_file(state.json)', ref: 'persist checkpoint', match: true },
+    { op: 'call_tool(fetch_ctx)', ref: 'gather context', match: true },
+    { op: 'emit_answer()', ref: 'summarize findings', match: false },
+    { op: 'update_state(V=0.07)', ref: 'record residual', match: true },
+  ]
+  const [active, setActive] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => setActive(a => (a + 1) % rows.length), 1500)
+    return () => clearInterval(interval)
+  }, [])
+
+  const cur = rows[active]
+
+  return (
+    <div className="relative w-full h-64 md:h-72 flex flex-col items-center justify-center px-2">
+      <div className="flex items-center gap-2 w-full max-w-md">
+        <div className="flex-1 space-y-1.5">
+          <div className="text-[10px] font-mono text-cyber-cyan mb-1 text-center">OPERATIONAL</div>
+          {rows.map((r, i) => (
+            <motion.div
+              key={i}
+              className="rounded border px-2 py-1.5 font-mono text-[9px] truncate"
+              style={{ borderColor: active === i ? '#00d4e6' : 'rgba(255,255,255,0.08)', backgroundColor: active === i ? 'rgba(0,212,230,0.08)' : 'transparent' }}
+              animate={{ opacity: active === i ? 1 : 0.5 }}
+            >
+              {r.op}
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="flex flex-col items-center justify-center w-8 shrink-0">
+          <motion.div
+            key={active}
+            className="w-full h-0.5 rounded-full"
+            style={{ backgroundColor: cur.match ? '#00e077' : '#ff6600' }}
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.4 }}
+          />
+        </div>
+
+        <div className="flex-1 space-y-1.5">
+          <div className="text-[10px] font-mono text-cyber-magenta mb-1 text-center">REFLECTIVE</div>
+          {rows.map((r, i) => (
+            <motion.div
+              key={i}
+              className="rounded border px-2 py-1.5 font-mono text-[9px] truncate"
+              style={{ borderColor: active === i ? '#e040e0' : 'rgba(255,255,255,0.08)', backgroundColor: active === i ? 'rgba(224,64,224,0.08)' : 'transparent' }}
+              animate={{ opacity: active === i ? 1 : 0.5 }}
+            >
+              {r.ref}
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      <motion.div
+        key={`badge-${active}`}
+        className="mt-4 px-3 py-1 rounded border text-xs font-mono flex items-center gap-2"
+        style={{ borderColor: cur.match ? '#00e077' : '#ff6600', color: cur.match ? '#00e077' : '#ff6600' }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
+        {cur.match ? '✓ cross-check consistent' : '⚠ divergence flagged'}
+      </motion.div>
+
+      <p className="absolute bottom-2 text-xs text-gray-500 font-mono">
+        What the agent did vs. what it reported — cross-linked
+      </p>
+    </div>
+  )
+}
+
 const animations = {
   'state-evolution': {
     title: 'State Evolution under (S, I, E, V)',
@@ -735,11 +901,27 @@ const animations = {
   },
   'mcp-integration': {
     title: 'MCP Integration',
-    subtitle: 'How tool integration works',
+    subtitle: '44+ tools across 29 handlers',
     icon: Network,
     color: 'blue',
     Component: MCPIntegrationAnimation,
-    insight: 'Standard Model Context Protocol enables seamless integration with Cursor, Claude Desktop, VS Code, and other MCP-compatible tools.',
+    insight: 'The governance layer is exposed as 44+ Model Context Protocol tools, organized into 29 handlers (governance, observability, lifecycle, audit, configuration). Drops into Cursor, Claude Desktop, VS Code, and other MCP-compatible clients with no custom integration work.',
+  },
+  'self-healing': {
+    title: 'Self-Healing Infrastructure',
+    subtitle: 'Stale-lock cleanup, loop detection, process recovery',
+    icon: Wrench,
+    color: 'green',
+    Component: SelfHealingAnimation,
+    insight: 'A crashed process leaves a stale lock; runaway updates form a loop. CIRWEL detects both and recovers automatically — clearing orphaned locks, blocking rapid-fire update cycles, and resuming healthy operation without an operator stepping in.',
+  },
+  'dual-log': {
+    title: 'Dual-Log Architecture',
+    subtitle: 'Operational and reflective logs, cross-linked',
+    icon: Layers,
+    color: 'magenta',
+    Component: DualLogAnimation,
+    insight: 'Two logs run in parallel: an operational log of what the agent did, and a reflective log of what it intended. Cross-linking the two grounds every claim against an action, so divergence between stated reasoning and real behavior is detectable rather than hidden. (Provisional patent — Dual-Log Architecture.)',
   },
   'local-first': {
     title: 'Local-First Architecture',
