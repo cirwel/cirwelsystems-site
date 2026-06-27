@@ -1,6 +1,6 @@
 import { motion, useScroll } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
-import { Activity, ShieldCheck, Eye, Users, Gauge, RefreshCw, Database, Network, Cpu, ChevronRight } from 'lucide-react'
+import { Activity, ShieldCheck, Eye, Users, Gauge, RefreshCw, Database, Network, Cpu, Wrench, Layers, ChevronRight } from 'lucide-react'
 import AnimatedCounter from './AnimatedCounter'
 import MCPModal from './MCPModals'
 import useTilt from '../hooks/useTilt'
@@ -113,8 +113,10 @@ export default function Platform() {
     { icon: Gauge, title: 'Adaptive Control', desc: 'Calibration adapts as the fleet\'s telemetry shifts, reducing manual tuning.', animationType: 'adaptive-control' },
     { icon: Eye, title: 'Anomaly Detection', desc: 'Detect behavioral drift, performance regressions, and unexpected state transitions in real time.', animationType: 'anomaly-detection' },
     { icon: Database, title: 'Per-Decision Audit Trail', desc: 'Every decision recorded with its (S, I, E, V) signature at execution time — reproducible, exportable, grounded in a public paper.', animationType: 'knowledge-graph' },
-    { icon: Network, title: 'MCP Integration', desc: 'Standard Model Context Protocol for seamless integration with Cursor, Claude Desktop, VS Code', animationType: 'mcp-integration' },
+    { icon: Network, title: 'MCP Integration', desc: 'Governance exposed as 44+ MCP tools across 29 handlers — drops into Cursor, Claude Desktop, and VS Code with no custom integration', animationType: 'mcp-integration' },
     { icon: Cpu, title: 'Local-First', desc: 'All data stored locally—no cloud dependencies, complete privacy', animationType: 'local-first' },
+    { icon: Wrench, title: 'Self-Healing Infrastructure', desc: 'Detects stale locks and runaway update loops, clears them, and resumes healthy operation without an operator', animationType: 'self-healing' },
+    { icon: Layers, title: 'Dual-Log Architecture', desc: 'Operational and reflective logs cross-linked, so what an agent did is checked against what it intended', animationType: 'dual-log' },
   ]
 
   // Auto-synced from local governance state by ~/scripts/refresh-cirwel-stats.sh
@@ -147,8 +149,8 @@ export default function Platform() {
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             State tracking, circuit breakers, audit trails, anomaly detection,
-            and multi-agent coordination — exposed as MCP tools. Zero cloud
-            dependencies, local-first by design.
+            and multi-agent coordination — exposed as 44+ MCP tools across 29
+            handlers. Zero cloud dependencies, local-first by design.
           </p>
         </motion.div>
 
