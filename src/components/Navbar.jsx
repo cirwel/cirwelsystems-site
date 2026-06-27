@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ArrowRight } from 'lucide-react'
+import { Menu, X, ArrowRight, Sparkles } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
 
 export default function Navbar() {
   const navigate = useNavigate()
-  const { isDark } = useTheme()
+  const { isDark, refined, toggleRefined } = useTheme()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const isHomePage = window.location.pathname === '/'
@@ -120,6 +120,21 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-3">
+            <motion.button
+              onClick={toggleRefined}
+              title={refined ? 'Switch to vivid theme' : 'Switch to refined theme'}
+              aria-pressed={refined}
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg font-mono text-xs border transition-colors duration-300 ${
+                refined
+                  ? 'border-cyber-cyan/30 text-gray-400 hover:text-cyber-cyan hover:border-cyber-cyan/50'
+                  : 'border-cyber-cyan/50 text-cyber-cyan bg-cyber-cyan/5'
+              }`}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              {refined ? 'Refined' : 'Vivid'}
+            </motion.button>
             <motion.a
               href={isHomePage ? '#contact' : '/#contact'}
               onClick={handleContactClick}
@@ -177,6 +192,17 @@ export default function Navbar() {
                   {item.name}
                 </motion.a>
               ))}
+              <motion.button
+                onClick={toggleRefined}
+                aria-pressed={refined}
+                className="w-full flex items-center justify-center gap-2 mt-2 px-4 py-3 rounded-lg font-mono text-sm border border-cyber-cyan/30 text-gray-300 hover:text-cyber-cyan hover:bg-cyber-cyan/5 transition-all"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25 }}
+              >
+                <Sparkles className="w-4 h-4" />
+                Theme: {refined ? 'Refined' : 'Vivid'}
+              </motion.button>
               <motion.a
                 href={isHomePage ? '#contact' : '/#contact'}
                 className="block mt-4 px-4 py-3 text-center cyber-card rounded-lg font-semibold text-cyber-cyan border-cyber-cyan/30 hover:bg-cyber-cyan/10 transition-all"

@@ -112,7 +112,7 @@ export default function Platform() {
     { icon: Users, title: 'Multi-Agent Fleet', desc: 'Track unlimited agents with independent state, fleet-wide health metrics, and coordinated recovery', animationType: 'multi-agent-fleet' },
     { icon: Gauge, title: 'Adaptive Control', desc: 'Calibration adapts as the fleet\'s telemetry shifts, reducing manual tuning.', animationType: 'adaptive-control' },
     { icon: Eye, title: 'Anomaly Detection', desc: 'Detect behavioral drift, performance regressions, and unexpected state transitions in real time.', animationType: 'anomaly-detection' },
-    { icon: Database, title: 'Knowledge Graph', desc: 'Captures discoveries and patterns across agents, enabling cross-agent learning and improvement', animationType: 'knowledge-graph' },
+    { icon: Database, title: 'Per-Decision Audit Trail', desc: 'Every decision recorded with its (S, I, E, V) signature at execution time — reproducible, exportable, grounded in a public paper.', animationType: 'knowledge-graph' },
     { icon: Network, title: 'MCP Integration', desc: 'Standard Model Context Protocol for seamless integration with Cursor, Claude Desktop, VS Code', animationType: 'mcp-integration' },
     { icon: Cpu, title: 'Local-First', desc: 'All data stored locally—no cloud dependencies, complete privacy', animationType: 'local-first' },
   ]

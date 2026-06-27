@@ -470,71 +470,56 @@ function AnomalyDetectionAnimation() {
 }
 
 function KnowledgeGraphAnimation() {
-  const [activeNode, setActiveNode] = useState(0)
-  const nodes = [
-    { x: 50, y: 25, label: 'Pattern A' },
-    { x: 25, y: 50, label: 'Pattern B' },
-    { x: 75, y: 50, label: 'Pattern C' },
-    { x: 35, y: 75, label: 'Pattern D' },
-    { x: 65, y: 75, label: 'Pattern E' },
+  const [head, setHead] = useState(4)
+  const decisions = [
+    { id: '#1042', verdict: 'proceed', s: 0.21, i: 0.88, e: 0.74, v: 0.05 },
+    { id: '#1043', verdict: 'proceed', s: 0.30, i: 0.81, e: 0.69, v: 0.09 },
+    { id: '#1044', verdict: 'pause',   s: 0.62, i: 0.44, e: 0.51, v: 0.41 },
+    { id: '#1045', verdict: 'proceed', s: 0.34, i: 0.79, e: 0.66, v: 0.12 },
+    { id: '#1046', verdict: 'proceed', s: 0.27, i: 0.85, e: 0.71, v: 0.07 },
   ]
-  const edges = [[0,1], [0,2], [1,3], [2,4], [1,2], [3,4]]
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveNode(n => (n + 1) % nodes.length)
-    }, 1500)
+      setHead(h => (h + 1) % decisions.length)
+    }, 1400)
     return () => clearInterval(interval)
   }, [])
 
   return (
-    <div className="relative w-full h-64 md:h-72 flex items-center justify-center">
-      <svg className="w-64 h-56" viewBox="0 0 100 100">
-        {edges.map(([from, to], i) => (
-          <motion.line
-            key={i}
-            x1={nodes[from].x}
-            y1={nodes[from].y}
-            x2={nodes[to].x}
-            y2={nodes[to].y}
-            stroke="#00d4e6"
-            strokeWidth="0.5"
-            opacity={activeNode === from || activeNode === to ? 0.8 : 0.2}
-          />
-        ))}
-        
-        {edges.map(([from, to], i) => (
-          (activeNode === from || activeNode === to) && (
-            <motion.circle
-              key={`pulse-${i}`}
-              r="1.5"
-              fill="#00d4e6"
-              initial={{ cx: nodes[from].x, cy: nodes[from].y }}
-              animate={{ cx: nodes[to].x, cy: nodes[to].y }}
-              transition={{ duration: 1, repeat: Infinity }}
-            />
+    <div className="relative w-full h-64 md:h-72 flex flex-col items-center justify-center px-4">
+      <div className="w-full max-w-sm space-y-2">
+        {decisions.map((d, i) => {
+          const isHead = head === i
+          const paused = d.verdict === 'pause'
+          return (
+            <motion.div
+              key={d.id}
+              className="flex items-center gap-3 rounded-lg border px-3 py-2 font-mono text-[10px]"
+              style={{
+                borderColor: isHead ? '#00d4e6' : 'rgba(255,255,255,0.08)',
+                backgroundColor: isHead ? 'rgba(0,212,230,0.08)' : 'transparent',
+              }}
+              animate={{ opacity: isHead ? 1 : 0.55 }}
+              transition={{ duration: 0.3 }}
+            >
+              <span className="text-gray-500 w-10">{d.id}</span>
+              <span
+                className="w-14 uppercase tracking-wide"
+                style={{ color: paused ? '#ff6600' : '#00e077' }}
+              >
+                {d.verdict}
+              </span>
+              <span className="flex-1 text-right text-gray-400">
+                S{d.s.toFixed(2)} I{d.i.toFixed(2)} E{d.e.toFixed(2)} V{d.v.toFixed(2)}
+              </span>
+            </motion.div>
           )
-        ))}
-        
-        {nodes.map((node, i) => (
-          <g key={i}>
-            <motion.circle
-              cx={node.x}
-              cy={node.y}
-              r={activeNode === i ? 8 : 6}
-              fill={activeNode === i ? '#00d4e6' : '#1a1a24'}
-              stroke="#00d4e6"
-              strokeWidth="1"
-              animate={{ scale: activeNode === i ? [1, 1.2, 1] : 1 }}
-              transition={{ duration: 0.5 }}
-            />
-            <text x={node.x} y={node.y + 15} textAnchor="middle" fill="#666" fontSize="4">{node.label}</text>
-          </g>
-        ))}
-      </svg>
-      
+        })}
+      </div>
+
       <p className="absolute bottom-2 text-xs text-gray-500 font-mono">
-        Cross-agent learning and pattern sharing
+        Each decision stamped with its (S, I, E, V) signature
       </p>
     </div>
   )
