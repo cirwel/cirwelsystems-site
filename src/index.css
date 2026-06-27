@@ -329,6 +329,45 @@ body {
   }
 }
 
+/* ----------------------------------------------------------------------------
+   Refined mode — a restrained "enterprise" variant layered on top of the vivid
+   cyberpunk look. Toggled via the navbar (html.refined). Keeps the identity
+   (cyan-on-near-black, glass cards, subtle circuitry) but pulls back the three
+   loudest signals: magenta, heading glow, and background intensity.
+---------------------------------------------------------------------------- */
+html.refined {
+  /* Desaturate the magenta accent → calmer slate-violet for card edges/accents */
+  --accent-magenta: rgba(124, 142, 204, 0.55);
+}
+
+/* Drop magenta from heading gradients — cyan → blue reads more serious */
+html.refined .text-gradient,
+html.refined .text-gradient-cyber {
+  background: linear-gradient(90deg, #00d4e6 0%, #2f7fff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Soften the arcade-y heading glow to a single subtle halo */
+html.refined .text-glow {
+  text-shadow: 0 0 12px rgba(0, 212, 230, 0.22);
+}
+
+html.refined .text-glow-magenta {
+  text-shadow: 0 0 12px rgba(124, 142, 204, 0.2);
+}
+
+/* Calm the animated background by one notch (composites the whole subtree,
+   including the JS-driven aurora/orbs/particles) */
+html.refined .cyber-bg {
+  opacity: 0.55;
+}
+
+/* Tone down the magenta lower-hairline on cards */
+html.refined .cyber-card::after {
+  opacity: 0.18;
+}
+
 @keyframes glitch-anim-1 {
   0% { 
     clip-path: inset(40% 0 61% 0);

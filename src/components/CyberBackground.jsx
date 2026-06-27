@@ -461,7 +461,7 @@ export default function CyberBackground({ variant = 'full' }) {
   const capability = useDeviceCapability()
   
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+    <div className="cyber-bg absolute inset-0 overflow-hidden pointer-events-none -z-10 transition-opacity duration-500">
       <div className="absolute inset-0 bg-gradient-to-b from-[#050810] via-[#080c18] to-[#050810]" />
       
       <AuroraGradient reducedMotion={reducedMotion} />
