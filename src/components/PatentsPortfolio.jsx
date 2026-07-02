@@ -340,9 +340,9 @@ export default function PatentsPortfolio() {
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
             Nine provisional applications were filed between September and November
             2025, covering the runtime-governance stack as it stood at filing. The
-            system has evolved substantially since, and its production implementation
-            is released open source (Apache-2.0). Filings are retained selectively as
-            a defensive position — never as a gate on research or open-source use.
+            system has evolved substantially since; the durable IP posture is the
+            open one — Apache-2.0 releases and a DOI-versioned public record serving
+            as prior art, never a gate on research or open-source use.
           </p>
           
           <div className="flex flex-wrap justify-center gap-6">
