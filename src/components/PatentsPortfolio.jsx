@@ -338,8 +338,10 @@ export default function PatentsPortfolio() {
           </h1>
           
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            9 provisional patent applications forming a comprehensive framework for trustworthy, 
-            explainable, and compliant AI systems.
+            Nine provisional applications, filed September–November 2025, covering the
+            runtime-governance stack. The production implementation is released open
+            source (Apache-2.0); the filings are maintained as a defensive position,
+            not a gate on research or open-source use.
           </p>
           
           <div className="flex flex-wrap justify-center gap-6">

@@ -9,7 +9,7 @@ export default function Footer() {
 
   const links = [
     { name: 'Problem', href: '/#about' },
-    { name: 'Moat', href: '/#technology' },
+    { name: 'Technology', href: '/#technology' },
     { name: 'Markets', href: '/#industries' },
     { name: 'Product', href: '/#platform' },
     { name: 'IP', href: '/#ip' },
@@ -133,7 +133,7 @@ export default function Footer() {
           
           <div className="flex items-center gap-1">
             <span className="text-cyber-cyan/30 font-mono text-xs mr-2">{'<'}{'/'}</span>
-            <span className="text-gray-500 text-xs">AI Governance & Compliance</span>
+            <span className="text-gray-500 text-xs">Runtime Governance Infrastructure</span>
             <span className="text-cyber-cyan/30 font-mono text-xs ml-2">{'>'}</span>
           </div>
         </div>
