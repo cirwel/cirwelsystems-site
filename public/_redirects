@@ -1,0 +1,6 @@
+# cirwelsystems.com is consolidated into cirwel.org (operator decision,
+# 2026-08-27). The A/B between the two design registers concluded: every
+# apparatus, claims check, and funder-facing pointer went to cirwel.org.
+# All paths 301 to the root — the two sites never shared a URL structure,
+# so path-preserving redirects would only manufacture 404s.
+/* https://cirwel.org/ 301
