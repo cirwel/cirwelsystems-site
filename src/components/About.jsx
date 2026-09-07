@@ -130,10 +130,9 @@ export default function About() {
             Agents Lose <span className="text-gradient-cyber">Continuity</span> Across Time
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-4">
-            A long-running agent is more than a sequence of isolated model calls. It accumulates
-            claims, evidence, state, memory, and obligations across process instances that start,
-            stop, restart, compact, fail, and hand work to one another. Those boundaries are often
-            handled by separate mechanisms, leaving identity, evidence, state, and coordination fragmented.
+            Long-lived agents accumulate claims, evidence, state, memory, and obligations across
+            process boundaries. When those boundaries are handled separately, continuity and
+            accountability fragment.
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-sm">
             <span className="px-3 py-1.5 rounded-full bg-cyber-orange/10 border border-cyber-orange/30 text-cyber-orange font-mono">
@@ -163,10 +162,9 @@ export default function About() {
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold mb-4 group-hover:text-cyber-orange transition-colors">The Persistence Gap</h3>
                     <p className="text-gray-300 leading-relaxed">
-                      Evals score tasks, guardrails constrain individual actions, and traces describe
-                      runs. None by themselves establish how a long-lived identity is bound across
-                      process instances, what evidence belongs to its claims, what state it has accumulated,
-                      or how responsibility moves when work is handed elsewhere.
+                      Evals score tasks, guardrails constrain actions, and traces describe runs.
+                      None by themselves bind identity, evidence, state, and responsibility across
+                      process instances and handoffs.
                     </p>
                   </div>
                 </div>
@@ -193,9 +191,8 @@ export default function About() {
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold mb-4 group-hover:text-cyber-cyan transition-colors">A Shared Runtime Layer</h3>
                     <p className="text-gray-300 leading-relaxed">
-                      UNITARES puts identity, provenance, longitudinal state, memory, review,
-                      coordination, policy, and recovery behind common interfaces so different
-                      models and agent harnesses can participate without becoming the same runtime.
+                      UNITARES puts identity, provenance, state, memory, review, coordination,
+                      policy, and recovery behind common interfaces across models and agent harnesses.
                     </p>
                   </div>
                 </div>
@@ -230,10 +227,8 @@ export default function About() {
                 </div>
                 
                 <p className="text-gray-400 text-sm leading-relaxed mb-3 italic">
-                  One part of that runtime is longitudinal state estimation. The research question is
-                  whether observable behavioral and operational signals contain useful information
-                  about how an agent is functioning over time, and whether those signals can support
-                  reliable intervention.
+                  One part of that runtime is longitudinal state estimation: testing whether observable
+                  signals are useful for understanding and governing agent behavior over time.
                 </p>
                 <p className="text-gray-300 leading-relaxed mb-4">
                   CIRWEL gives every agent four live signals — how confident it is, how much it's
