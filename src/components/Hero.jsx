@@ -227,7 +227,7 @@ export default function Hero() {
             className="text-lg md:text-xl font-mono font-light tracking-[0.2em] uppercase"
             style={{ color: isDark ? 'rgba(0,212,230,0.6)' : '#0066ff99' }}
           >
-            Infrastructure for Persistent AI Agents
+            Infrastructure for Long-Lived AI Agents
           </p>
         </motion.div>
 
@@ -237,7 +237,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.35, ease: 'easeOut' }}
           className="text-base md:text-lg text-gray-400 max-w-xl mx-auto mb-8 leading-relaxed"
         >
-          Identity, longitudinal state, evidence, memory, coordination, and governance for long-lived agents across process instances that start, stop, restart, and hand work to one another. UNITARES provides an accountable record across those boundaries while leaving the model and agent harness free to change.
+          Continuity, accountability, and coordination across restarts and handoffs. UNITARES binds identity, state, evidence, and memory to one accountable record while models and agent harnesses change.
         </motion.p>
 
         <motion.div
