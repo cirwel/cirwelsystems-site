@@ -159,9 +159,9 @@ export default function Hero() {
   const [activeModal, setActiveModal] = useState(null)
   
   const heroFeatures = [
-    { icon: Activity, title: 'Agents Read Their Own State', desc: 'A live read on each agent — whether it\'s drifting, hedging, or running on fumes — before anything breaks.' },
-    { icon: Fingerprint, title: 'Stable by Design', desc: 'When the system pauses an agent, it\'s tied to a measured signal with a published proof — not a guessed threshold.' },
-    { icon: RefreshCw, title: 'Every Decision is Auditable', desc: 'Every agent decision leaves a reproducible trace you can replay later. No black box, no proprietary log format.' },
+    { icon: Fingerprint, title: 'Identity Across Runs', desc: 'Bind activity, evidence, memory, and coordination to a durable identity anchor rather than a display name or one process instance.' },
+    { icon: Activity, title: 'Longitudinal Runtime State', desc: 'Track how an agent is operating across checkpoints, with explicit evidence and named policy reasons rather than isolated snapshots.' },
+    { icon: RefreshCw, title: 'Accountable Coordination', desc: 'Keep claims, reviews, leases, handoffs, recovery, and policy decisions attributable and replayable across process boundaries.' },
   ]
   
   const [activeCoreModal, setActiveCoreModal] = useState(null)
@@ -227,7 +227,7 @@ export default function Hero() {
             className="text-lg md:text-xl font-mono font-light tracking-[0.2em] uppercase"
             style={{ color: isDark ? 'rgba(0,212,230,0.6)' : '#0066ff99' }}
           >
-            Runtime Governance for Autonomous Agents
+            Infrastructure for Long-Lived AI Agents
           </p>
         </motion.div>
 
@@ -237,11 +237,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.35, ease: 'easeOut' }}
           className="text-base md:text-lg text-gray-400 max-w-xl mx-auto mb-8 leading-relaxed"
         >
-          Live state readings for AI agents in production, so they slow down, ask for review, or hand off — before something visible fails. Delivers{' '}
-          <span className="font-mono" style={{ color: isDark ? 'rgba(0, 212, 230, 0.75)' : '#0066ff' }}>
-            <RotatingLabel />
-          </span>{' '}
-          backed by a published method, not vibes.
+          Continuity, accountability, and coordination across restarts and handoffs. UNITARES binds identity, state, evidence, and memory to one accountable record while models and agent harnesses change.
         </motion.p>
 
         <motion.div
