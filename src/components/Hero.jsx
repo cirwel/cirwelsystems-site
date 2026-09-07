@@ -144,7 +144,7 @@ function TypewriterText({ text, className = '', typingDelay = 1.2 }) {
         }}
         transition={{ 
           duration: 1, 
-          repeat: Infinity,
+          repeat: Infinity, 
           ease: 'easeInOut',
           times: [0, 0.5, 0.5, 1]
         }}
@@ -159,9 +159,9 @@ export default function Hero() {
   const [activeModal, setActiveModal] = useState(null)
   
   const heroFeatures = [
-    { icon: Fingerprint, title: 'Identity Across Runs', desc: 'Bind activity, evidence, memory, and coordination to a durable agent identity rather than a display name or one process.' },
+    { icon: Fingerprint, title: 'Identity Across Runs', desc: 'Bind activity, evidence, memory, and coordination to a durable identity anchor rather than a display name or one process instance.' },
     { icon: Activity, title: 'Longitudinal Runtime State', desc: 'Track how an agent is operating across checkpoints, with explicit evidence and named policy reasons rather than isolated snapshots.' },
-    { icon: RefreshCw, title: 'Accountable Coordination', desc: 'Keep claims, reviews, leases, handoffs, recovery, and policy decisions attributable and replayable across processes.' },
+    { icon: RefreshCw, title: 'Accountable Coordination', desc: 'Keep claims, reviews, leases, handoffs, recovery, and policy decisions attributable and replayable across process boundaries.' },
   ]
   
   const [activeCoreModal, setActiveCoreModal] = useState(null)
@@ -237,7 +237,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.35, ease: 'easeOut' }}
           className="text-base md:text-lg text-gray-400 max-w-xl mx-auto mb-8 leading-relaxed"
         >
-          Identity, longitudinal state, evidence, memory, coordination, and governance for agent processes that persist, restart, and hand work to one another. UNITARES keeps those processes accountable across time while leaving the model and agent harness free to change.
+          Identity, longitudinal state, evidence, memory, coordination, and governance for long-lived agents across process instances that start, stop, restart, and hand work to one another. UNITARES provides an accountable record across those boundaries while leaving the model and agent harness free to change.
         </motion.p>
 
         <motion.div
