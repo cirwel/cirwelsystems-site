@@ -131,9 +131,9 @@ export default function About() {
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-4">
             A long-running agent is more than a sequence of isolated model calls. It accumulates
-            claims, evidence, state, memory, and obligations across processes that restart,
-            compact, fail, and hand work to one another. Most agent infrastructure does not
-            provide one accountable layer across those boundaries.
+            claims, evidence, state, memory, and obligations across process instances that start,
+            stop, restart, compact, fail, and hand work to one another. Those boundaries are often
+            handled by separate mechanisms, leaving identity, evidence, state, and coordination fragmented.
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-sm">
             <span className="px-3 py-1.5 rounded-full bg-cyber-orange/10 border border-cyber-orange/30 text-cyber-orange font-mono">
@@ -164,9 +164,9 @@ export default function About() {
                     <h3 className="text-2xl font-bold mb-4 group-hover:text-cyber-orange transition-colors">The Persistence Gap</h3>
                     <p className="text-gray-300 leading-relaxed">
                       Evals score tasks, guardrails constrain individual actions, and traces describe
-                      runs. None by themselves establish who a persistent process is, what evidence
-                      belongs to its claims, what state it has accumulated, or how responsibility moves
-                      when work is handed elsewhere.
+                      runs. None by themselves establish how a long-lived identity is bound across
+                      process instances, what evidence belongs to its claims, what state it has accumulated,
+                      or how responsibility moves when work is handed elsewhere.
                     </p>
                   </div>
                 </div>
