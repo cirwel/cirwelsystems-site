@@ -127,21 +127,23 @@ export default function About() {
             {'///'} THE PROBLEM
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Agents Ship Without <span className="text-gradient-cyber">Measurement</span>
+            Agents Lose <span className="text-gradient-cyber">Continuity</span> Across Time
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-4">
-            AI agents are shipping into production without a way to read their own internal state.
-            By the time something looks wrong on the outside, it's already failed on the inside.
+            A long-running agent is more than a sequence of isolated model calls. It accumulates
+            claims, evidence, state, memory, and obligations across processes that restart,
+            compact, fail, and hand work to one another. Most agent infrastructure does not
+            provide one accountable layer across those boundaries.
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-sm">
             <span className="px-3 py-1.5 rounded-full bg-cyber-orange/10 border border-cyber-orange/30 text-cyber-orange font-mono">
-              No live state signals
+              Identity breaks across runs
             </span>
             <span className="px-3 py-1.5 rounded-full bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan font-mono">
-              No stability guarantees
+              Evidence and state fragment
             </span>
             <span className="px-3 py-1.5 rounded-full bg-cyber-magenta/10 border border-cyber-magenta/30 text-cyber-magenta font-mono">
-              No open standard
+              Coordination loses provenance
             </span>
           </div>
         </motion.div>
@@ -159,11 +161,12 @@ export default function About() {
                     <AlertTriangle className="w-7 h-7 text-cyber-orange" />
                   </motion.div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-4 group-hover:text-cyber-orange transition-colors">The Measurement Gap</h3>
+                    <h3 className="text-2xl font-bold mb-4 group-hover:text-cyber-orange transition-colors">The Persistence Gap</h3>
                     <p className="text-gray-300 leading-relaxed">
-                      Today's agent dashboards show logs and traces. None of them show the agent's actual
-                      internal state — whether it's confident, drifting, or about to fail — in a form that
-                      supports any real safety guarantee.
+                      Evals score tasks, guardrails constrain individual actions, and traces describe
+                      runs. None by themselves establish who a persistent process is, what evidence
+                      belongs to its claims, what state it has accumulated, or how responsibility moves
+                      when work is handed elsewhere.
                     </p>
                   </div>
                 </div>
@@ -188,10 +191,11 @@ export default function About() {
                     <Target className="w-7 h-7 text-cyber-cyan" />
                   </motion.div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-4 group-hover:text-cyber-cyan transition-colors">An Open Standard</h3>
+                    <h3 className="text-2xl font-bold mb-4 group-hover:text-cyber-cyan transition-colors">A Shared Runtime Layer</h3>
                     <p className="text-gray-300 leading-relaxed">
-                      There's no shared way to measure how an agent is actually doing. CIRWEL is building
-                      one — published, reproducible, and the same across model families and vendors.
+                      UNITARES puts identity, provenance, longitudinal state, memory, review,
+                      coordination, policy, and recovery behind common interfaces so different
+                      models and agent harnesses can participate without becoming the same runtime.
                     </p>
                   </div>
                 </div>
@@ -226,8 +230,10 @@ export default function About() {
                 </div>
                 
                 <p className="text-gray-400 text-sm leading-relaxed mb-3 italic">
-                  The intuition: every agent has an internal state we can actually measure. Read it
-                  continuously, prove it stays in a safe range, step in early when it doesn't.
+                  One part of that runtime is longitudinal state estimation. The research question is
+                  whether observable behavioral and operational signals contain useful information
+                  about how an agent is functioning over time, and whether those signals can support
+                  reliable intervention.
                 </p>
                 <p className="text-gray-300 leading-relaxed mb-4">
                   CIRWEL gives every agent four live signals — how confident it is, how much it's
